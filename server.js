@@ -3,6 +3,8 @@ const hbs = require('hbs');
 const fs = require('fs');
 var app = express();
 
+//uses heroku's env PORT variable or if not set (on localhost)
+//will set listen to port 3000;
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'hbs');
@@ -45,6 +47,10 @@ app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page'
     });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs');
 });
 
 app.listen(port, () => {
